@@ -1,20 +1,53 @@
-
-# from sklearn.linear_model import SGDClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
 import pandas as pd
-# from sklearn.svm import LinearSVC
-# from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
-# from sklearn.feature_selection import VarianceThreshold,chi2,SelectKBest,f_classif
 import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
-
 from sklearn.metrics import confusion_matrix
 import seaborn as sb
 from csv import writer
 from csv import reader
+
+def accu(pipe1 ,pipe3,df,dfr):
+    X_test_accu=df.iloc[14000:15000,:].values
+    y_test_accu=dfr.iloc[14000:15000,-1].values
+    for i in range(len(y_test_accu)):
+        if y_test_accu[i]=='AFP':
+            y_test_accu[i]=0
+        if y_test_accu[i]=='PC':
+            y_test_accu[i]=1
+        if y_test_accu[i]=='NTP': 
+            y_test_accu[i]=2
+        if y_test_accu[i]=='UNK':
+            y_test_accu[i]=3
+    y_test_accu=y_test_accu.astype('int')
+
+    pred_kn=pipe1.predict_proba(X_test_accu)
+    pred_rf=pipe3.predict_proba(X_test_accu)
+    y_pred_accu=[]
+    a=1
+    b=2
+    c=8
+    for i in range(len(X_test)):
+        pro_score_0=a*proba_SVC[i][0]+c*proba_RF[i][0]
+        pro_score_1=a*proba_SVC[i][1]+c*proba_RF[i][1]
+        pro_score_2=a*proba_SVC[i][2]+c*proba_RF[i][2]
+        pro_score_3=a*proba_SVC[i][3]+c*proba_RF[i][3]
+
+                        
+        if(pro_score_0>=pro_score_1 and pro_score_0>=pro_score_2 and pro_score_0>=pro_score_3):
+            y_pred_accu.append(0)
+        elif(pro_score_1>=pro_score_0 and pro_score_1>=pro_score_2 and pro_score_1>=pro_score_3):
+            y_pred_accu.append(1)
+        elif(pro_score_2>=pro_score_0 and pro_score_2>=pro_score_1 and pro_score_2>=pro_score_3):
+            y_pred_accu.append(2)
+        elif(pro_score_3>=pro_score_0 and pro_score_3>=pro_score_1 and pro_score_3>=pro_score_2):
+            y_pred_accu.append(3)
+    print(accuracy_score(y_test_accu,y_pred_accu)) 
+    cf=confusion_matrix(y_test_accu,y_pred_accu)
+    sb.heatmap(cf,annot=True,xticklabels=['AFP','PC','NTP','UNK'],yticklabels=['AFP','PC','NTP','UNK'])
 
 #paths
 training_path=r"C:\Users\Asus\Documents\full_data.csv"  
@@ -42,18 +75,6 @@ y_train=y_train.astype('int')
 dfT=pd.read_csv(testing_path,usecols=cols)
 dfrT=pd.read_csv(testing_path,usecols=['av_training_set'])
 X_test=dfT.iloc[:,:].values
-y_test=dfrT.iloc[:,-1].values
-print("x_TEST",X_test.shape)
-for i in range(len(y_test)):
-    if y_test[i]=='AFP':
-        y_test[i]=0
-    if y_test[i]=='PC':
-        y_test[i]=1
-    if y_test[i]=='NTP': 
-        y_test[i]=2
-    if y_test[i]=='UNK':
-        y_test[i]=3
-y_test=y_test.astype('int')
 
 
 pipe1 = Pipeline([("Standard Scaling",RobustScaler()),("SGD Regression",KNeighborsClassifier())])
@@ -101,9 +122,6 @@ for i in range(len(X_test)):
 # print(len(y_pred))
 # print(len(y_test))
 # y_pred=pipe3.predict(X_test)
-print(accuracy_score(y_test,y_pred)) 
-cf=confusion_matrix(y_test,y_pred)
-sb.heatmap(cf,annot=True)
 actual_Class=[]
 for i in range(len(X_test)):
     if y_pred[i]==0:
@@ -142,3 +160,4 @@ with open(testing_path, 'r') as read_obj, \
         i+=1
         # Add the updated row / list to the output file
         csv_writer.writerow(row)
+accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
