@@ -2,7 +2,6 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
 import pandas as pd
 from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
