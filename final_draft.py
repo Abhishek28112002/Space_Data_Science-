@@ -59,7 +59,6 @@ cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth
 df=pd.read_csv(training_path,usecols=cols)
 dfr=pd.read_csv(training_path,usecols=['av_training_set'])
 X_train=df.iloc[:14000,:].values
-print("xTRAIN",X_train)
 y_train=dfr.iloc[:14000,-1].values
 for i in range(len(y_train)):
     if y_train[i]=='AFP':
@@ -83,11 +82,6 @@ pipe1.fit(X_train, y_train)  # apply scaling on training data
 # print("Mean absolute error",mean_absolute_error(Y_pred,y_test))
 proba_SVC=pipe1.predict_proba(X_test)
 
-# pipe2 = Pipeline([("Standard Scaling",StandardScaler()),("SGD Regression",GaussianProcessClassifier(random_state=0))])
-# pipe2.fit(X_train, y_train)  # apply scaling on training data
-# # print("gcp Trained")
-# # print("Mean absolute error",mean_absolute_error(Y_pred,y_test))
-# proba_gpc=pipe2.predict_proba(X_test)
 
 pipe3 = Pipeline([("Standard Scaling",RobustScaler()),("SGD Regression",RandomForestClassifier(random_state=12,n_estimators=100))])
 pipe3.fit(X_train, y_train) # apply scaling on training data
@@ -97,9 +91,6 @@ proba_RF=pipe3.predict_proba(X_test)
 # print("Random Forest Tested")
 y_pred=[]
 value=10
-row=1
-# print(len(X_test))
-# print(proba_RF.shape)
 a=1
 b=2
 c=8
@@ -119,9 +110,6 @@ for i in range(len(X_test)):
     elif(pro_score_3>=pro_score_0 and pro_score_3>=pro_score_1 and pro_score_3>=pro_score_2):
         y_pred.append(3)
                 
-# print(len(y_pred))
-# print(len(y_test))
-# y_pred=pipe3.predict(X_test)
 actual_Class=[]
 for i in range(len(X_test)):
     if y_pred[i]==0:
