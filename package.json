@@ -1,0 +1,25 @@
+{
+  "name": "space_data_science-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhishek28112002/Space_Data_Science-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abhishek28112002/Space_Data_Science-/issues"
+  },
+  "homepage": "https://github.com/Abhishek28112002/Space_Data_Science-#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "python-shell": "^3.0.1"
+  }
+}
