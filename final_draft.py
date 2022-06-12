@@ -140,9 +140,9 @@ with open(output_path, 'w', newline='') as write_obj:
     for row in range(no_rows):
         if j==0:
             j=1
-            row.append("Class")
+            csv_writer.writerow("Class")
         else:
             csv_writer.writerow(actual_Class[i])
             i+=1
-
+print("succesfully written")
 # accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
