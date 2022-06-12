@@ -76,7 +76,7 @@ y_train=y_train.astype('int')
 dfT=pd.read_csv(testing,usecols=cols)
 X_test=dfT.iloc[:,:].values
 no_rows=len(dfT)
-# os.remove(testing)
+os.remove(testing)
 
 pipe1 = Pipeline([("Standard Scaling",RobustScaler()),("SGD Regression",KNeighborsClassifier())])
 pipe1.fit(X_train, y_train)  # apply scaling on training data
