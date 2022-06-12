@@ -55,6 +55,7 @@ As this model was performing better than the other models tried SVM,LR,SVC,Neura
 
 # For testing accuracy on the tested data
 - uncomment the call to accu function at the end of file
-<br>
-<br>
+
+
+
 **If unable to download output file it is present in the uploads folder as python.csv**
