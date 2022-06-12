@@ -144,10 +144,8 @@ with open(testing, 'r') as read_obj, \
             j=1
             row.append("Class")
             csv_writer.writerow(row)
-            continue
-        # Append the default text in the row / list
-        row.append(actual_Class[i])
-        i+=1
-        # Add the updated row / list to the output file
-        csv_writer.writerow(row)
+        else:
+            csv_writer.writerow(actual_Class[i])
+            i+=1
+
 accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
