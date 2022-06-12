@@ -9,6 +9,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
 import seaborn as sb
+import os
 from csv import writer
 from csv import reader
 
@@ -73,9 +74,9 @@ for i in range(len(y_train)):
 y_train=y_train.astype('int')
 
 dfT=pd.read_csv(testing,usecols=cols)
-dfrT=pd.read_csv(testing,usecols=['av_training_set'])
 X_test=dfT.iloc[:,:].values
-
+no_rows=len(dfT)
+os.remove(testing)
 
 pipe1 = Pipeline([("Standard Scaling",RobustScaler()),("SGD Regression",KNeighborsClassifier())])
 pipe1.fit(X_train, y_train)  # apply scaling on training data
@@ -129,22 +130,20 @@ for i in range(len(X_test)):
 
 # print(actual_Class.__len__())
 # Open the input_file in read mode and output_file in write mode
-with open(testing, 'r') as read_obj, \
-        open(output_path, 'w', newline='') as write_obj:
+open(output_path, 'w', newline='') as write_obj:
     # Create a csv.reader object from the input file object
-    csv_reader = reader(read_obj)
+csv_reader = reader(read_obj)
     # Create a csv.writer object from the output file object
-    csv_writer = writer(write_obj)
+csv_writer = writer(write_obj)
     # Read each row of the input csv file as list
-    i=0
-    j=0
-    for row in csv_reader:
-        if j==0:
-            j=1
-            row.append("Class")
-            csv_writer.writerow(row)
-        else:
-            csv_writer.writerow(actual_Class[i])
-            i+=1
+i=0
+j=0
+for row in csv_reader:
+    if j==0:
+        j=1
+        row.append("Class")
+    else:
+        csv_writer.writerow(actual_Class[i])
+        i+=1
 
-accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
+# accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
