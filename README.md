@@ -2,10 +2,10 @@
 # Built With
 
 Python
-	•	sklearn
-	•	seaboarn
-	•	pandas
-	•	csv
+	-•	sklearn
+	-•	seaboarn
+	-•	pandas
+	-•	csv
 Node.JS
 	•	PythonShell
 Express JS
