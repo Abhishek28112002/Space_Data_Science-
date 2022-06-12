@@ -19,12 +19,11 @@ files.mv('./uploads/'+filenames,(req,err)=>{
 })
 }
 })
- PythonShell.run("final_draft.py",null,(err,res)=>{
+ PythonShell.run("final_draft.py",null,(res,err)=>{
     if(err) console.log(err);
     if(res){
         res.send(res);
     }
-
 })
 
 app.listen(5000);
