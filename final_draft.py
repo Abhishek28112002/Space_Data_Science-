@@ -154,4 +154,3 @@ with open(output_path, 'w', newline='') as write_obj:
             i+=1
 print("features used for classification",cols)
 # accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
-down()
