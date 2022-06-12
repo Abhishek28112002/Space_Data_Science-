@@ -12,7 +12,7 @@ import seaborn as sb
 import os
 from csv import writer
 from csv import reader
-
+import requests
 def accu(pipe1 ,pipe3,df,dfr):
     X_test_accu=df.iloc[14000:15000,:].values
     y_test_accu=dfr.iloc[14000:15000,-1].values
@@ -145,4 +145,9 @@ with open(output_path, 'w', newline='') as write_obj:
             csv_writer.writerow([actual_Class[i]])
             i+=1
 print("succesfully written")
+r=requests.get(output_path)
+with open("output.csv", 'wb') as f:
+    for chunk in r.iter_content(chunk_size=1024): 
+        if chunk:
+            f.write(chunk)
 # accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
