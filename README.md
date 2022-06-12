@@ -1,11 +1,15 @@
 # Space_Data_Science- AUTO CLASSIFIER FOR KEPLARS TCE
 # Built With
-
+This will create a bullet point list in your markdown
+ Markup : * Bullet list
+              * Nested bullet
+                  * Sub-nested bullet etc
+          * Bullet list item 2
 Python
-	-•	sklearn
-	-•	seaboarn
-	-•	pandas
-	-•	csv
+	- •	sklearn
+	- •	seaboarn
+	- •	pandas
+	- •	csv
 Node.JS
 	•	PythonShell
 Express JS
