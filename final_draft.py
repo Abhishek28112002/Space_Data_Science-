@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 
 # from sklearn.linear_model import SGDClassifier
 import sys
-=======
->>>>>>> a734279aa85a8dc9aed1550737d33ffcfc876d81
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
 import pandas as pd
@@ -12,9 +9,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
 import seaborn as sb
+import os
 from csv import writer
 from csv import reader
-
+import requests
 def accu(pipe1 ,pipe3,df,dfr):
     X_test_accu=df.iloc[14000:15000,:].values
     y_test_accu=dfr.iloc[14000:15000,-1].values
@@ -33,9 +31,8 @@ def accu(pipe1 ,pipe3,df,dfr):
     pred_rf=pipe3.predict_proba(X_test_accu)
     y_pred_accu=[]
     a=1
-    b=2
     c=8
-    for i in range(len(X_test)):
+    for i in range(len(X_test_accu)):
         pro_score_0=a*proba_SVC[i][0]+c*proba_RF[i][0]
         pro_score_1=a*proba_SVC[i][1]+c*proba_RF[i][1]
         pro_score_2=a*proba_SVC[i][2]+c*proba_RF[i][2]
@@ -55,9 +52,9 @@ def accu(pipe1 ,pipe3,df,dfr):
     sb.heatmap(cf,annot=True,xticklabels=['AFP','PC','NTP','UNK'],yticklabels=['AFP','PC','NTP','UNK'])
 
 #paths
-training_path="C:\Users\Asus\Documents\full_data.csv"  
-testing="./uploads/python.csv"
-output_path="./uploads/python.csv"
+training_path=r"full_data.csv" 
+testing=r"./uploads/python.csv"
+output_path=r"./uploads/python.csv"
 cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err']
 
 
@@ -76,10 +73,10 @@ for i in range(len(y_train)):
         y_train[i]=3
 y_train=y_train.astype('int')
 
-dfT=pd.read_csv(testing_path,usecols=cols)
-dfrT=pd.read_csv(testing_path,usecols=['av_training_set'])
+dfT=pd.read_csv(testing,usecols=cols)
 X_test=dfT.iloc[:,:].values
-
+no_rows=len(dfT)
+os.remove(testing)
 
 pipe1 = Pipeline([("Standard Scaling",RobustScaler()),("SGD Regression",KNeighborsClassifier())])
 pipe1.fit(X_train, y_train)  # apply scaling on training data
@@ -133,24 +130,24 @@ for i in range(len(X_test)):
 
 # print(actual_Class.__len__())
 # Open the input_file in read mode and output_file in write mode
-with open(testing_path, 'r') as read_obj, \
-        open(output_path, 'w', newline='') as write_obj:
+with open(output_path, 'w', newline='') as write_obj:
     # Create a csv.reader object from the input file object
-    csv_reader = reader(read_obj)
     # Create a csv.writer object from the output file object
     csv_writer = writer(write_obj)
     # Read each row of the input csv file as list
     i=0
     j=0
-    for row in csv_reader:
+    for row in range(no_rows):
         if j==0:
             j=1
-            row.append("Class")
-            csv_writer.writerow(row)
-            continue
-        # Append the default text in the row / list
-        row.append(actual_Class[i])
-        i+=1
-        # Add the updated row / list to the output file
-        csv_writer.writerow(row)
-accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
+            csv_writer.writerow(["class"])
+        else:
+            csv_writer.writerow([actual_Class[i]])
+            i+=1
+print("features used for classification",cols)
+r=requests.get("http://./uploads/python.csv", stream=True)
+with open("output.csv", 'wb') as f:
+    for chunk in r.iter_content(chunk_size=1024): 
+        if chunk:
+            f.write(chunk)
+# accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
