@@ -13,7 +13,6 @@ from csv import writer
 from csv import reader
 
 
-
 #print accuracy while testing on test data 
 def accu(pipe1 ,pipe3,df,dfr):
     X_test_accu=df.iloc[14000:15000,:].values
@@ -57,11 +56,12 @@ def accu(pipe1 ,pipe3,df,dfr):
 #paths
 training_path=r"full_data.csv" 
 testing=r"./uploads/python.csv"
-output_path=r"https://drive.google.com/drive/folders/1zSsRNnnDdOSpgMWka6vlN7GWJ2GfCsKo?usp=sharing"
+output_path=r"./uploads/python.csv"
 cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err']
 
 
 #creating testing and training datasets
+
 df=pd.read_csv(training_path,usecols=cols)
 dfr=pd.read_csv(training_path,usecols=['av_training_set'])
 X_train=df.iloc[:14000,:].values
@@ -76,8 +76,11 @@ for i in range(len(y_train)):
     if y_train[i]=='UNK':
         y_train[i]=3
 y_train=y_train.astype('int')
-
-dfT=pd.read_csv(testing,usecols=cols)
+try:
+    dfT=pd.read_csv(testing,usecols=cols)
+except ValueError:
+    print("Usecols do not match columns, columns expected but not found")
+    exit()
 X_test=dfT.iloc[:,:].values
 no_rows=len(dfT)
 
@@ -137,8 +140,7 @@ print("Count of AFP",actual_Class.count("AFP"))
 print("Count of PC",actual_Class.count("PC"))
 print("Count of NTP",actual_Class.count("NTP"))
 print("Count of UNK",actual_Class.count("UNK"))
-
-
+print("OUTPUT data",y_pred)
 #write in output csv file
 with open(output_path, 'w', newline='') as write_obj:
     # Create a csv.writer object from the output file object
