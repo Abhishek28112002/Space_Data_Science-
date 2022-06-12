@@ -1,5 +1,5 @@
 # Space_Data_Science-
-#Built With
+# Built With
 
 Python
 	•	sklearn
@@ -12,18 +12,18 @@ Express JS
 HTML
 CSS
 
-#Features Used
+# Features Used
 '
 'tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err'                       
  
 
-#Model Used
+# Model Used
 
 Using Score probability combination of Random forest  with 100 trees 
 and k-nearest neighbour while using the 8 features from the given list 
 As this model was performing better than the other models tried SVM,LR,SVC,Neural Network, GCP(slow) in terms of speed and accuracy
 
-#Input File Format
+# Input File Format
 
 Input data - Should be a CSV file containing values of the 
 features used and in the given order
@@ -32,7 +32,7 @@ features used and in the given order
 
 
 
-#Output File Format
+# Output File Format
 
 A CSV file conatining one column with name "CLASS" containing the predicted TCE type of that row.                 
 
