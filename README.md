@@ -53,3 +53,6 @@ As this model was performing better than the other models tried SVM,LR,SVC,Neura
 	-The features used by the model
 	-The output class as a python list
 <!-- Link to download to resultant CSV file containing class -->
+
+# For testing accuracy on the tested data
+- uncomment the call to accu function at the end of file
