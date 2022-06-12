@@ -130,20 +130,19 @@ for i in range(len(X_test)):
 
 # print(actual_Class.__len__())
 # Open the input_file in read mode and output_file in write mode
-open(output_path, 'w', newline='') as write_obj:
+with open(output_path, 'w', newline='') as write_obj:
     # Create a csv.reader object from the input file object
-csv_reader = reader(read_obj)
     # Create a csv.writer object from the output file object
-csv_writer = writer(write_obj)
+    csv_writer = writer(write_obj)
     # Read each row of the input csv file as list
-i=0
-j=0
-for row in csv_reader:
-    if j==0:
-        j=1
-        row.append("Class")
-    else:
-        csv_writer.writerow(actual_Class[i])
-        i+=1
+    i=0
+    j=0
+    for row in range(no_rows):
+        if j==0:
+            j=1
+            row.append("Class")
+        else:
+            csv_writer.writerow(actual_Class[i])
+            i+=1
 
 # accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
