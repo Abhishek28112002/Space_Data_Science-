@@ -30,9 +30,8 @@ def accu(pipe1 ,pipe3,df,dfr):
     pred_rf=pipe3.predict_proba(X_test_accu)
     y_pred_accu=[]
     a=1
-    b=2
     c=8
-    for i in range(len(X_test)):
+    for i in range(len(X_test_accu)):
         pro_score_0=a*proba_SVC[i][0]+c*proba_RF[i][0]
         pro_score_1=a*proba_SVC[i][1]+c*proba_RF[i][1]
         pro_score_2=a*proba_SVC[i][2]+c*proba_RF[i][2]
@@ -52,8 +51,8 @@ def accu(pipe1 ,pipe3,df,dfr):
     sb.heatmap(cf,annot=True,xticklabels=['AFP','PC','NTP','UNK'],yticklabels=['AFP','PC','NTP','UNK'])
 
 #paths
-training_path=r"full_data.csv"  
-testing=r"./uploads/python.csv"
+training_path=r"C:\Users\Asus\Documents\full_data.csv" 
+testing=r"C:\Users\Asus\Documents\full_data.csv"
 output_path=r"./uploads/python.csv"
 cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err']
 
