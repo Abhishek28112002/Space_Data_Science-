@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 
 # from sklearn.linear_model import SGDClassifier
 import sys
-=======
->>>>>>> a734279aa85a8dc9aed1550737d33ffcfc876d81
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
 import pandas as pd
@@ -55,9 +52,9 @@ def accu(pipe1 ,pipe3,df,dfr):
     sb.heatmap(cf,annot=True,xticklabels=['AFP','PC','NTP','UNK'],yticklabels=['AFP','PC','NTP','UNK'])
 
 #paths
-training_path="C:\Users\Asus\Documents\full_data.csv"  
-testing="./uploads/python.csv"
-output_path="./uploads/python.csv"
+training_path=r"C:\Users\Asus\Documents\full_data.csv"  
+testing=r"./uploads/python.csv"
+output_path=r"./uploads/python.csv"
 cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err']
 
 
@@ -76,8 +73,8 @@ for i in range(len(y_train)):
         y_train[i]=3
 y_train=y_train.astype('int')
 
-dfT=pd.read_csv(testing_path,usecols=cols)
-dfrT=pd.read_csv(testing_path,usecols=['av_training_set'])
+dfT=pd.read_csv(testing,usecols=cols)
+dfrT=pd.read_csv(testing,usecols=['av_training_set'])
 X_test=dfT.iloc[:,:].values
 
 
@@ -133,7 +130,7 @@ for i in range(len(X_test)):
 
 # print(actual_Class.__len__())
 # Open the input_file in read mode and output_file in write mode
-with open(testing_path, 'r') as read_obj, \
+with open(testing, 'r') as read_obj, \
         open(output_path, 'w', newline='') as write_obj:
     # Create a csv.reader object from the input file object
     csv_reader = reader(read_obj)
