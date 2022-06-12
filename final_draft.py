@@ -1,19 +1,19 @@
 
-try:
-  import sklearn
-except ImportError:
-  os.system('python -m pip install sklearn')
-# -- above lines try to install requests module if not present
-# -- if all went well, import required module again ( for global access)
-# from sklearn.linear_model import SGDClassifier
-try:
-  import pandas
-except ImportError:
-  os.system('python -m pip install pandas')
-try:
-  import seaborn
-except ImportError:
-  os.system('python -m pip install seaborn')
+# try:
+#   import sklearn
+# except ImportError:
+#   os.system('python -m pip install sklearn')
+# # -- above lines try to install requests module if not present
+# # -- if all went well, import required module again ( for global access)
+# # from sklearn.linear_model import SGDClassifier
+# try:
+#   import pandas
+# except ImportError:
+#   os.system('python -m pip install pandas')
+# try:
+#   import seaborn
+# except ImportError:
+#   os.system('python -m pip install seaborn')
 
 import sys
 from sklearn.pipeline import Pipeline
