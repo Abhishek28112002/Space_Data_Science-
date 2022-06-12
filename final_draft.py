@@ -148,7 +148,7 @@ print("Count of AFP",actual_Class.count("AFP"))
 print("Count of PC",actual_Class.count("PC"))
 print("Count of NTP",actual_Class.count("NTP"))
 print("Count of UNK",actual_Class.count("UNK"))
-print("OUTPUT data",y_pred)
+print("OUTPUT data",actual_Class)
 >>>>>>> ad9262ca8b64d447dab4f6922e3b9767be9110cc
 #write in output csv file
 with open(output_path, 'w', newline='') as write_obj:
