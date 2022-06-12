@@ -19,8 +19,8 @@ from csv import reader
 
 #paths
 training_path=r"C:\Users\Asus\Documents\full_data.csv"  
-testing=sys.argv[1]
-output_path=r"C:\Users\Asus\Documents\output_class.csv"
+testing="./uploads/python.csv"
+output_path="./uploads/python.csv"
 cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err']
 
 
