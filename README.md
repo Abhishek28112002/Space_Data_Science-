@@ -13,7 +13,6 @@
 - CSS
 
 # Features Used
-'
 - tce_period 
 - tce_time0bk_err 
 - tce_impact_err 
