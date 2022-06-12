@@ -131,10 +131,10 @@ for i in range(len(X_test)):
 
 
 #print count of labels
-print("Count of AFP",actual_Class.count("AFP"))
-print("Count of PC",actual_Class.count("PC"))
-print("Count of NTP",actual_Class.count("NTP"))
-print("Count of UNK",actual_Class.count("UNK"))
+print("Count of AFP ::",  actual_Class.count("AFP"))
+print("Count of PC  ::",   actual_Class.count("PC"))
+print("Count of NTP ::", actual_Class.count("NTP"))
+print("Count of UNK ::",  actual_Class.count("UNK"))
 
 
 #write in output csv file
