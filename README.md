@@ -58,4 +58,4 @@ As this model was performing better than the other models tried SVM,LR,SVC,Neura
 
 
 
-**If unable to download output file it is present in the uploads folder as python.csv**
+**NOTE - IF UNABLE TO DOWNLOAD OUTPUT FILE IT IS PRESENT IN THE UPLODS FOLDER AS  "python.csv"**
