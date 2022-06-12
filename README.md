@@ -1,16 +1,16 @@
 # Space_Data_Science- AUTO CLASSIFIER FOR KEPLARS TCE
 # Built With
 
-Python
-- sklearn
-- seaboarn
-- pandas
-- csv
-Node.JS
-	•	PythonShell
-Express JS
-HTML
-CSS
+- Python
+	- sklearn
+	- seaboarn
+	- pandas
+	- csv
+- Node.JS
+	- PythonShell
+- Express JS
+- HTML
+- CSS
 
 # Features Used
 '
