@@ -22,9 +22,8 @@ files.mv('./uploads/'+filenames,(req,err)=>{
  PythonShell.run("final_draft.py",null,(res,err)=>{
     if(err) console.log(err);
     if(res){
-        res.send(res);
+        res.sendfile(__dirname + '/index2.html' +res);
     }
-
 })
 
 app.listen(5000);
