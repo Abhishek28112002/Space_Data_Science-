@@ -1,5 +1,20 @@
 
+try:
+  import sklearn
+except ImportError:
+  os.system('python -m pip install sklearn')
+# -- above lines try to install requests module if not present
+# -- if all went well, import required module again ( for global access)
 # from sklearn.linear_model import SGDClassifier
+try:
+  import pandas
+except ImportError:
+  os.system('python -m pip install pandas')
+try:
+  import seaborn
+except ImportError:
+  os.system('python -m pip install seaborn')
+
 import sys
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
@@ -12,7 +27,6 @@ import seaborn as sb
 import os
 from csv import writer
 from csv import reader
-import requests
 def accu(pipe1 ,pipe3,df,dfr):
     X_test_accu=df.iloc[14000:15000,:].values
     y_test_accu=dfr.iloc[14000:15000,-1].values
@@ -94,7 +108,6 @@ proba_RF=pipe3.predict_proba(X_test)
 y_pred=[]
 value=10
 a=1
-b=2
 c=8
 for i in range(len(X_test)):
     pro_score_0=a*proba_SVC[i][0]+c*proba_RF[i][0]
@@ -123,10 +136,10 @@ for i in range(len(X_test)):
     if y_pred[i]==3:
         actual_Class.append('UNK')
 
-# print("Count of AFP",actual_Class.count("AFP"))
-# print("Count of PC",actual_Class.count("PC"))
-# print("Count of NTP",actual_Class.count("NTP"))
-# print("Count of UNK",actual_Class.count("UNK"))
+print("Count of AFP",actual_Class.count("AFP"))
+print("Count of PC",actual_Class.count("PC"))
+print("Count of NTP",actual_Class.count("NTP"))
+print("Count of UNK",actual_Class.count("UNK"))
 
 # print(actual_Class.__len__())
 # Open the input_file in read mode and output_file in write mode
@@ -145,9 +158,4 @@ with open(output_path, 'w', newline='') as write_obj:
             csv_writer.writerow([actual_Class[i]])
             i+=1
 print("features used for classification",cols)
-r=requests.get("http://./uploads/python.csv", stream=True)
-with open("output.csv", 'wb') as f:
-    for chunk in r.iter_content(chunk_size=1024): 
-        if chunk:
-            f.write(chunk)
 # accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
