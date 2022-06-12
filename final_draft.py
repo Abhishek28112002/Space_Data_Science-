@@ -1,20 +1,4 @@
-
-# try:
-#   import sklearn
-# except ImportError:
-#   os.system('python -m pip install sklearn')
-# # -- above lines try to install requests module if not present
-# # -- if all went well, import required module again ( for global access)
-# # from sklearn.linear_model import SGDClassifier
-# try:
-#   import pandas
-# except ImportError:
-#   os.system('python -m pip install pandas')
-# try:
-#   import seaborn
-# except ImportError:
-#   os.system('python -m pip install seaborn')
-
+#libraries
 import sys
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
@@ -67,11 +51,13 @@ def accu(pipe1 ,pipe3,df,dfr):
     cf=confusion_matrix(y_test_accu,y_pred_accu)
     sb.heatmap(cf,annot=True,xticklabels=['AFP','PC','NTP','UNK'],yticklabels=['AFP','PC','NTP','UNK'])
 
+
 #paths
 training_path=r"full_data.csv" 
 testing=r"./uploads/python.csv"
 output_path=r"./uploads/python.csv"
 cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err']
+
 
 #creating testing and training datasets
 df=pd.read_csv(training_path,usecols=cols)
@@ -92,22 +78,24 @@ y_train=y_train.astype('int')
 dfT=pd.read_csv(testing,usecols=cols)
 X_test=dfT.iloc[:,:].values
 no_rows=len(dfT)
+
+
+#deleting input file
 os.remove(testing)
 
+#kneighbors classifier
 pipe1 = Pipeline([("Standard Scaling",RobustScaler()),("SGD Regression",KNeighborsClassifier())])
 pipe1.fit(X_train, y_train)  # apply scaling on training data
 # print("K Nearest Neighbors Trained")
-
 proba_SVC=pipe1.predict_proba(X_test)               # predict on test data using trained model
 
-
+#random forest classifier
 pipe3 = Pipeline([("Standard Scaling",RobustScaler()),("SGD Regression",RandomForestClassifier(random_state=12,n_estimators=100))])
 pipe3.fit(X_train, y_train) # apply scaling on training data
 # print("Random Forest Trained")
 proba_RF=pipe3.predict_proba(X_test)            # predict on test data using trained model
 
 y_pred=[]
-value=10
 a=1
 c=8
                                                                 
