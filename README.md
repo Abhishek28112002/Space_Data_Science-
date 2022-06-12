@@ -57,4 +57,4 @@ As this model was performing better than the other models tried SVM,LR,SVC,Neura
 - uncomment the call to accu function at the end of file
 <br>
 <br>
-**NOTE - If unable to download output file it is present in the uploads folder as python.csv**
+**If unable to download output file it is present in the uploads folder as python.csv**
