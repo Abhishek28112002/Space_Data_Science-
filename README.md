@@ -14,7 +14,14 @@
 
 # Features Used
 '
-'tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err'                       
+- tce_period 
+- tce_time0bk_err 
+- tce_impact_err 
+- tce_depth 
+- tce_depth_err 
+- tce_prad_err 
+- tce_steff_err 
+- tce_slogg_err                       
  
 
 # Model Used
@@ -25,19 +32,24 @@ As this model was performing better than the other models tried SVM,LR,SVC,Neura
 
 # Input File Format
 
-Input data - Should be a CSV file containing values of the 
-features used and in the given order
-'tce_period',  'tce_time0bk_err',  'tce_impact_err',  'tce_depth', 
-'tce_depth_err',  'tce_prad_err',  'tce_steff_err',  'tce_slogg_err
+- Should be a CSV file containing values of the features used and in the given order
+- tce_period 
+- tce_time0bk_err 
+- tce_impact_err 
+- tce_depth 
+- tce_depth_err 
+- tce_prad_err 
+- tce_steff_err 
+- tce_slogg_err   
 
 
 
 # Output File Format
 
-A CSV file conatining one column with name "CLASS" containing the predicted TCE type of that row.                 
+- A CSV file conatining one column with name "CLASS" containing the predicted TCE type of that row.                 
 
-On WebPage <br />
-Count of the different classes in the output<br />
-The features used by the model<br />
-The output class as a python list<br />
+-On WebPage 
+	-Count of the different classes in the output
+	-The features used by the model
+	-The output class as a python list
 <!-- Link to download to resultant CSV file containing class -->
