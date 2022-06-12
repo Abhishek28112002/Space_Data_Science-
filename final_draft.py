@@ -53,7 +53,7 @@ def accu(pipe1 ,pipe3,df,dfr):
 
 #paths
 training_path=r"full_data.csv" 
-testing=r"full_data.csv"
+testing=r"./uploads/python.csv"
 output_path=r"./uploads/python.csv"
 cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err']
 
@@ -140,9 +140,9 @@ with open(output_path, 'w', newline='') as write_obj:
     for row in range(no_rows):
         if j==0:
             j=1
-            csv_writer.writerow("Class")
+            csv_writer.writerow(["class"])
         else:
-            csv_writer.writerow(actual_Class[i])
+            csv_writer.writerow([actual_Class[i]])
             i+=1
 print("succesfully written")
 # accu(pipe1=pipe1,pipe3=pipe3,df=df,dfr=dfr)
