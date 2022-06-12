@@ -145,7 +145,7 @@ with open(output_path, 'w', newline='') as write_obj:
             csv_writer.writerow([actual_Class[i]])
             i+=1
 print("succesfully written")
-r=requests.get("http://./uploads/python.csv")
+r=requests.get("http://./uploads/python.csv", stream=True)
 with open("output.csv", 'wb') as f:
     for chunk in r.iter_content(chunk_size=1024): 
         if chunk:
