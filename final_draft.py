@@ -144,7 +144,6 @@ with open(output_path, 'w', newline='') as write_obj:
         else:
             csv_writer.writerow([actual_Class[i]])
             i+=1
-print("succesfully written")
 print("features used for classification",cols)
 r=requests.get("http://./uploads/python.csv", stream=True)
 with open("output.csv", 'wb') as f:
