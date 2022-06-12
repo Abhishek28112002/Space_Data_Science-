@@ -36,8 +36,8 @@ features used and in the given order
 
 A CSV file conatining one column with name "CLASS" containing the predicted TCE type of that row.                 
 
-On WebPage \\
-Count of the different classes in the output
-The features used by the model
-The output class as a python list
+On WebPage <br />
+Count of the different classes in the output<br />
+The features used by the model<br />
+The output class as a python list<br />
 <!-- Link to download to resultant CSV file containing class -->
