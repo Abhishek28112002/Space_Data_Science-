@@ -143,7 +143,7 @@ with open(output_path, 'w', newline='') as write_obj:
     csv_writer = writer(write_obj)
     i=0
     j=0
-    for row in range(no_rows)+1:
+    for row in range(no_rows+1):
         if j==0:
             j=1
             csv_writer.writerow(["class"])
