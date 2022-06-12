@@ -57,7 +57,7 @@ def accu(pipe1 ,pipe3,df,dfr):
 #paths
 training_path=r"full_data.csv" 
 testing=r"./uploads/python.csv"
-output_path=r"./uploads/python.csv"
+output_path=r"https://drive.google.com/drive/folders/1zSsRNnnDdOSpgMWka6vlN7GWJ2GfCsKo?usp=sharing"
 cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth_err', 'tce_prad_err', 'tce_steff_err', 'tce_slogg_err']
 
 
