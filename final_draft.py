@@ -12,6 +12,7 @@ import os
 from csv import writer
 from csv import reader
 
+
 #print accuracy while testing on test data 
 def accu(pipe1 ,pipe3,df,dfr):
     X_test_accu=df.iloc[14000:15000,:].values
@@ -60,6 +61,7 @@ cols=['tce_period', 'tce_time0bk_err', 'tce_impact_err', 'tce_depth', 'tce_depth
 
 
 #creating testing and training datasets
+
 df=pd.read_csv(training_path,usecols=cols)
 dfr=pd.read_csv(training_path,usecols=['av_training_set'])
 X_train=df.iloc[:14000,:].values
@@ -74,8 +76,11 @@ for i in range(len(y_train)):
     if y_train[i]=='UNK':
         y_train[i]=3
 y_train=y_train.astype('int')
-
-dfT=pd.read_csv(testing,usecols=cols)
+try:
+    dfT=pd.read_csv(testing,usecols=cols)
+except ValueError:
+    print("Usecols do not match columns, columns expected but not found")
+    exit()
 X_test=dfT.iloc[:,:].values
 no_rows=len(dfT)
 
@@ -131,19 +136,27 @@ for i in range(len(X_test)):
 
 
 #print count of labels
+<<<<<<< HEAD
 print("Count of AFP ::",  actual_Class.count("AFP"))
 print("Count of PC  ::",   actual_Class.count("PC"))
 print("Count of NTP ::", actual_Class.count("NTP"))
 print("Count of UNK ::",  actual_Class.count("UNK"))
 
 
+=======
+print("Count of AFP",actual_Class.count("AFP"))
+print("Count of PC",actual_Class.count("PC"))
+print("Count of NTP",actual_Class.count("NTP"))
+print("Count of UNK",actual_Class.count("UNK"))
+print("OUTPUT data",y_pred)
+>>>>>>> ad9262ca8b64d447dab4f6922e3b9767be9110cc
 #write in output csv file
 with open(output_path, 'w', newline='') as write_obj:
     # Create a csv.writer object from the output file object
     csv_writer = writer(write_obj)
     i=0
     j=0
-    for row in range(no_rows):
+    for row in range(no_rows+1):
         if j==0:
             j=1
             csv_writer.writerow(["class"])
