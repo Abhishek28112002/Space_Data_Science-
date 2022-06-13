@@ -141,7 +141,12 @@ print("Count of AFP",actual_Class.count("AFP"))
 print("Count of PC",actual_Class.count("PC"))
 print("Count of NTP",actual_Class.count("NTP"))
 print("Count of UNK",actual_Class.count("UNK"))
-
+with open(r"./uploads/features.txt", 'w') as f:
+    f.write("Count of AFP",actual_Class.count("AFP"))
+    f.write("Count of PC",actual_Class.count("PC"))
+    f.write("Count of NTP",actual_Class.count("NTP"))
+    f.write("Count of UNK",actual_Class.count("UNK"))
+    f.write("features used for classification",cols)
 #write in output csv file
 with open(output_path, 'w', newline='') as write_obj:
     # Create a csv.writer object from the output file object
