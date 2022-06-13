@@ -47,6 +47,8 @@ res.sendfile(path.resolve(__dirname, "./index2.html"));
       res.zip([
         { path: folderPath+'/python.csv',
             name: 'output.csv'},
+            { path: folderPath+'/Features.txt',
+            name: 'Features.txt'},
       ])
           // res.send(results);
       })
