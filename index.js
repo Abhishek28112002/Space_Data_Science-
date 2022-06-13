@@ -26,7 +26,7 @@ app.post("/", function (req, res) {
         PythonShell.run("final_draft.py", options, (err, results) => {
           if (err) console.log(err);
           if (results) {   
- res.render(__dirname + "index2.html", {name:results});
+            res.sendfile(path.resolve(__dirname, "./index2.html"));
           }
         });
       }
