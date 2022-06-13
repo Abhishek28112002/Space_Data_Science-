@@ -45,7 +45,8 @@ As this model was performing better than the other models tried SVM,LR,SVC,Neura
 
 # Output File Format
 
-- A CSV file conatining one column with name "CLASS" containing the predicted TCE type of that row.                 
+-The output CSV file having one column with name "CLASS" containing the predicted TCE type of that row.
+-Zip file containing the CSV file and features.txt ( count of each class along with features list)
 
 - On WebPage 
 	-Count of the different classes in the output
