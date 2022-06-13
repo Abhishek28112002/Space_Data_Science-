@@ -142,7 +142,6 @@ print("Count of PC",actual_Class.count("PC"))
 print("Count of NTP",actual_Class.count("NTP"))
 print("Count of UNK",actual_Class.count("UNK"))
 
-print("OUTPUT data",actual_Class)
 #write in output csv file
 with open(output_path, 'w', newline='') as write_obj:
     # Create a csv.writer object from the output file object
