@@ -1,13 +1,18 @@
 const express = require("express");
 const upload = require("express-fileupload");
+var bodyParser = require('body-parser');
 const fs = require("fs");
 const path = require("path");
+const zip = require('express-zip');
 const download = require("download");
 let { PythonShell } = require("python-shell");
 const app = express();
 app.use(express.static("./publick"));
 app.use(upload());
-
+// app.use(bodyParser.urlencoded({extend:true}));
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
+// app.set('views', __dirname);
 app.get("/", function (req, res) {
   res.sendfile(path.resolve(__dirname, "./index.html"));
 });
@@ -27,13 +32,13 @@ app.post("/", function (req, res) {
           if (err) console.log(err);
           if (results) {   
 const folderPath = __dirname+'/uploads';
-console.log(" path :", folderPath);
-   download(folderPath+'/python.csv',`${__dirname}`).then(function(err,result) {
-        if(err)Console.log(err);
-        else
-        console.log("done");
-    })
-    res.send(results);
+// res.render(__dirname + "index2.html", {name:results});
+
+res.zip([
+  { path: folderPath+'/python.csv',
+      name: 'output.csv'},
+])
+    // res.send(results);
 }})
            
           }
