@@ -25,6 +25,7 @@
     "express-zip": "^3.0.0",
     "fast-csv": "^4.3.6",
     "nodemon": "^2.0.16",
+    "pug": "^3.0.2",
     "python-shell": "^3.0.1"
   }
 }

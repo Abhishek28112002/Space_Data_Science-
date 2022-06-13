@@ -9,17 +9,12 @@ let { PythonShell } = require("python-shell");
 const app = express();
 app.use(express.static("./publick"));
 app.use(upload());
-// app.use(bodyParser.urlencoded({extend:true}));
-// app.engine('html', require('ejs').renderFile);
-// app.set('view engine', 'html');
-// app.set('views', __dirname);
 app.get("/", function (req, res) {
   res.sendfile(path.resolve(__dirname, "./index.html"));
 });
 let options = {
   pythonOptions: ["-u"], 
 };
-
 app.post("/", function (req, res) {
   if (req.files) {
     console.log(req.files);
@@ -31,11 +26,7 @@ app.post("/", function (req, res) {
         PythonShell.run("final_draft.py", options, (err, results) => {
           if (err) console.log(err);
           if (results) {   
-
-// res.render(__dirname + "index2.html", {name:results});
-res.sendfile(path.resolve(__dirname, "./index2.html"));
-
-           
+ res.render(__dirname + "index2.html", {name:results});
           }
         });
       }
@@ -47,10 +38,9 @@ res.sendfile(path.resolve(__dirname, "./index2.html"));
       res.zip([
         { path: folderPath+'/python.csv',
             name: 'output.csv'},
-            { path: folderPath+'/Features.txt',
+            { path: folderPath+'/features.txt',
             name: 'Features.txt'},
       ])
-          // res.send(results);
       })
 
 app.listen(5000);
