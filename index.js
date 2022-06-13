@@ -31,19 +31,24 @@ app.post("/", function (req, res) {
         PythonShell.run("final_draft.py", options, (err, results) => {
           if (err) console.log(err);
           if (results) {   
-const folderPath = __dirname+'/uploads';
-// res.render(__dirname + "index2.html", {name:results});
 
-res.zip([
-  { path: folderPath+'/python.csv',
-      name: 'output.csv'},
-])
-    // res.send(results);
-}})
+// res.render(__dirname + "index2.html", {name:results});
+res.sendfile(path.resolve(__dirname, "./index2.html"));
+
            
           }
         });
       }
     });
+  }
+});
+    app.get('/multiple', function(req, res) {
+      const folderPath = __dirname+'/uploads';
+      res.zip([
+        { path: folderPath+'/python.csv',
+            name: 'output.csv'},
+      ])
+          // res.send(results);
+      })
 
 app.listen(5000);
