@@ -150,10 +150,10 @@ with open(r"./uploads/features.txt", 'w') as f:
     f.write(str(actual_Class.count("NTP")))
     f.write("\nCount of UNK-")
     f.write(str(actual_Class.count("UNK")))
-    f.write("\nfeatures used for classification-")
+    f.write("\nfeatures used for classification:-")
     for i in range(len(cols)):
         f.write(str(cols[i]))
-        f.write(" ")
+        f.write(", ")
 #write in output csv file
 with open(output_path, 'w', newline='') as write_obj:
     # Create a csv.writer object from the output file object
