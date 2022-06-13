@@ -31,9 +31,12 @@ app.post("/", function (req, res) {
         PythonShell.run("final_draft.py", options, (err, results) => {
           if (err) console.log(err);
           if (results) {   
+            const router = express.Router();
 
+            app.set("view engine", "pug");
+            app.set("views", path.join(__dirname, "views"));
 // res.render(__dirname + "index2.html", {name:results});
-res.sendfile(path.resolve(__dirname, "./index2.html"));
+res.render("index2.html", { title: `${results }`});
 
            
           }
@@ -47,7 +50,7 @@ res.sendfile(path.resolve(__dirname, "./index2.html"));
       res.zip([
         { path: folderPath+'/python.csv',
             name: 'output.csv'},
-            { path: folderPath+'/Features.txt',
+            { path: folderPath+'/features.txt',
             name: 'Features.txt'},
       ])
           // res.send(results);
